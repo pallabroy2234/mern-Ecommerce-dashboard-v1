@@ -9,7 +9,7 @@ export const categoryAdd = createAsyncThunk(
             const formData = new FormData();
             formData.append("name", info.name);
             formData.append("image", info.image);
-            const {data} = await api.post("/category-add", formData, {withCredentials: true})
+            const {data} = await api.post("/category-add", formData)
             return fulfillWithValue(data)
             
         } catch (e) {
@@ -25,7 +25,7 @@ export const get_categories = createAsyncThunk(
     async ({parPage, page, searchValue}, {rejectWithValue, fulfillWithValue}) => {
         try {
             
-            const {data} = await api.get(`/get-categories?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, {withCredentials: true})
+            const {data} = await api.get(`/get-categories?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`)
             return fulfillWithValue(data)
             
         } catch (e) {
@@ -57,7 +57,7 @@ export const categoryReducer = createSlice({
         });
         builder.addCase(categoryAdd.rejected, (state, {payload}) => {
             state.loader = false;
-            state.errorMessage = payload.message;
+            state.errorMessage = payload?.message;
         });
         builder.addCase(categoryAdd.fulfilled, (state, {payload}) => {
             state.loader = false;
@@ -67,7 +67,6 @@ export const categoryReducer = createSlice({
         builder.addCase(get_categories.fulfilled, (state, {payload}) => {
             state.categories = payload?.payload?.categories;
             state.totalCategories = payload?.payload?.totalCategories;
-            
         });
     }
     

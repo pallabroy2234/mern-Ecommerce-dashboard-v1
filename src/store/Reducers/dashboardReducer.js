@@ -7,7 +7,7 @@ export const getSellerDashboardData = createAsyncThunk(
 	"dashboard/getSellerDashboardData",
 	async (_, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get("/dashboard/seller/get-seller-dashboard-data", {withCredentials: true});
+			const {data} = await api.get("/dashboard/seller/get-seller-dashboard-data");
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -19,7 +19,7 @@ export const getAdminDashboardData = createAsyncThunk(
 	"dashboard/getAdminDashboardData",
 	async (_, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get("/dashboard/admin/get-admin-dashboard-data", {withCredentials: true});
+			const {data} = await api.get("/dashboard/admin/get-admin-dashboard-data");
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -60,7 +60,7 @@ export const dashboardReducer = createSlice({
 		});
 		builder.addCase(getSellerDashboardData.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		// 	* GET ADMIN DASHBOARD DATA
 		builder.addCase(getAdminDashboardData.fulfilled, (state, {payload}) => {
@@ -77,7 +77,7 @@ export const dashboardReducer = createSlice({
 		});
 		builder.addCase(getAdminDashboardData.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		
 	}

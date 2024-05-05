@@ -6,9 +6,7 @@ export const getSellerPaymentDetails = createAsyncThunk(
 	"payment/getSellerPaymentDetails",
 	async (_, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get("/payment/seller/get-payment-details", {
-				withCredentials: true
-			});
+			const {data} = await api.get("/payment/seller/get-payment-details");
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -21,9 +19,7 @@ export const sendWithdrawRequest = createAsyncThunk(
 	"payment/sendWithdrawRequest",
 	async (amount, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.post("/payment/seller/send-withdraw-request", {amount}, {
-				withCredentials: true
-			});
+			const {data} = await api.post("/payment/seller/send-withdraw-request", {amount});
 			return fulfillWithValue(data);
 		} catch (e) {
 			console.log(e.response.data);
@@ -37,9 +33,7 @@ export const getAdminSellerPaymentRequest = createAsyncThunk(
 	"payment/getAdminSellerPaymentRequest",
 	async (_, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get("/payment/admin/get-payment-request", {
-				withCredentials: true
-			});
+			const {data} = await api.get("/payment/admin/get-payment-request");
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -52,9 +46,7 @@ export const confirmPaymentRequest = createAsyncThunk(
 	"payment/confirmPaymentRequest",
 	async (paymentId, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.post("/payment/admin/confirm-payment-request", {paymentId}, {
-				withCredentials: true
-			});
+			const {data} = await api.post("/payment/admin/confirm-payment-request", {paymentId});
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -99,7 +91,7 @@ export const paymentReducer = createSlice({
 		});
 		builder.addCase(getSellerPaymentDetails.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		// 	* SEND WITHDRAW REQUEST
 		builder.addCase(sendWithdrawRequest.fulfilled, (state, {payload}) => {
@@ -116,7 +108,7 @@ export const paymentReducer = createSlice({
 		});
 		builder.addCase(sendWithdrawRequest.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		
 		// 	* ADMIN -> GET SELLER'S PAYMENT REQUEST
@@ -129,7 +121,7 @@ export const paymentReducer = createSlice({
 		});
 		builder.addCase(getAdminSellerPaymentRequest.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		// 	* ADMIN -> CONFIRM PAYMENT REQUEST
 		builder.addCase(confirmPaymentRequest.fulfilled, (state, {payload}) => {
@@ -142,7 +134,7 @@ export const paymentReducer = createSlice({
 		});
 		builder.addCase(confirmPaymentRequest.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 	}
 	

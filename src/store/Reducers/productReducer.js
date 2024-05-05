@@ -8,7 +8,6 @@ export const add_product = createAsyncThunk(
     async (info, {rejectWithValue, fulfillWithValue}) => {
         try {
             const {data} = await api.post("/add_product", info, {
-                withCredentials: true,
                 headers: {"Content-Type": "multipart/form-data"}
             })
             return fulfillWithValue(data)
@@ -24,7 +23,7 @@ export const get_products = createAsyncThunk(
     "product/get_products",
     async ({page,searchValue,parPage}, {rejectWithValue, fulfillWithValue}) => {
         try {
-            const {data} = await api.get(`/get_products?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}` , {withCredentials: true})
+            const {data} = await api.get(`/get_products?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`)
            
             return fulfillWithValue(data)
         } catch (e) {
@@ -40,7 +39,7 @@ export const get_product = createAsyncThunk(
     "product/get_product",
     async (productId, {rejectWithValue, fulfillWithValue}) => {
         try {
-            const {data} = await api.get(`/get_product/${productId}` , {withCredentials: true})
+            const {data} = await api.get(`/get_product/${productId}`)
             return fulfillWithValue(data)
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -54,7 +53,6 @@ export const update_product = createAsyncThunk(
     async (info, {rejectWithValue, fulfillWithValue}) => {
         try {
             const {data} = await api.post("/update_product", info, {
-                withCredentials: true,
                 headers: {"Content-Type": "multipart/form-data"}
             })
             return fulfillWithValue(data)
@@ -88,7 +86,7 @@ export const productReducer = createSlice({
         });
         builder.addCase(add_product.rejected, (state, {payload}) => {
             state.loader = false;
-            state.errorMessage = payload.message;
+            state.errorMessage = payload?.message;
         });
         builder.addCase(add_product.fulfilled, (state, {payload}) => {
             state.loader = false;

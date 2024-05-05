@@ -7,9 +7,7 @@ export const getUsers = createAsyncThunk(
 	"chat/getUsers",
 	async (_, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/dashboard/chat/seller/get-users`, {
-				withCredentials: true
-			});
+			const {data} = await api.get(`/dashboard/chat/seller/get-users`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			console.log(e.response.data);
@@ -22,9 +20,7 @@ export const getUserMessages = createAsyncThunk(
 	"chat/getUserMessages",
 	async (customerId, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/dashboard/chat/seller/get-user-messages/${customerId}`, {
-				withCredentials: true
-			});
+			const {data} = await api.get(`/dashboard/chat/seller/get-user-messages/${customerId}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			console.log(e.response.data);
@@ -39,9 +35,7 @@ export const sendSellerMessage = createAsyncThunk(
 	"chat/sendSellerMessage",
 	async (info, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.post("/dashboard/chat/seller/send-seller-message", info, {
-				withCredentials: true
-			});
+			const {data} = await api.post("/dashboard/chat/seller/send-seller-message", info);
 			return fulfillWithValue(data);
 		} catch (e) {
 			console.log(e.response.data);
@@ -55,9 +49,7 @@ export const getSellers = createAsyncThunk(
 	"chat/getSellers",
 	async (_, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get("/dashboard/chat/admin/get-sellers", {
-				withCredentials: true
-			});
+			const {data} = await api.get("/dashboard/chat/admin/get-sellers");
 			return fulfillWithValue(data);
 		} catch (e) {
 			
@@ -71,9 +63,7 @@ export const sendMessageToSeller = createAsyncThunk(
 	"chat/sendMessageToSeller",
 	async (info, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.post("/dashboard/chat/admin/message-send-seller-admin", info, {
-				withCredentials: true
-			});
+			const {data} = await api.post("/dashboard/chat/admin/message-send-seller-admin", info);
 			return fulfillWithValue(data);
 		} catch (e) {
 			
@@ -87,9 +77,7 @@ export const getCurrentAdminMessages = createAsyncThunk(
 	"chat/getCurrentAdminMessages",
 	async (sellerId, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/dashboard/chat/admin/get-admin-messages/${sellerId}`, {
-				withCredentials: true
-			});
+			const {data} = await api.get(`/dashboard/chat/admin/get-admin-messages/${sellerId}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			
@@ -104,9 +92,7 @@ export const getSellerMessages = createAsyncThunk(
 	"chat/getSellerMessages",
 	async (_, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/dashboard/chat/admin/get-seller-messages`, {
-				withCredentials: true
-			});
+			const {data} = await api.get(`/dashboard/chat/admin/get-seller-messages`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			
@@ -120,9 +106,7 @@ export const sendMessageToAdmin = createAsyncThunk(
 	"chat/sendMessageToAdmin",
 	async (info, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.post(`/dashboard/chat/admin/message-send-admin`, info, {
-				withCredentials: true
-			});
+			const {data} = await api.post(`/dashboard/chat/admin/message-send-admin`, info);
 			return fulfillWithValue(data);
 		} catch (e) {
 			
@@ -184,7 +168,7 @@ export const chatReducer = createSlice({
 		});
 		builder.addCase(getUsers.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(getUsers.pending, (state, _) => {
 			state.loader = true;
@@ -197,7 +181,7 @@ export const chatReducer = createSlice({
 		});
 		builder.addCase(getUserMessages.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(getUserMessages.pending, (state, _) => {
 			state.loader = true;
@@ -216,7 +200,7 @@ export const chatReducer = createSlice({
 			state.successMessage = payload.message;
 		});
 		builder.addCase(sendSellerMessage.rejected, (state, {payload}) => {
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(sendSellerMessage.pending, (state, _) => {
 			state.loader = true;
@@ -228,7 +212,7 @@ export const chatReducer = createSlice({
 			state.loader = false;
 		});
 		builder.addCase(getSellers.rejected, (state, {payload}) => {
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 			state.loader = false;
 		});
 		builder.addCase(getSellers.pending, (state, _) => {
@@ -245,7 +229,7 @@ export const chatReducer = createSlice({
 			state.loader = true;
 		});
 		builder.addCase(sendMessageToSeller.rejected, (state, {payload}) => {
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		
 		// 	* GET CURRENT SELLER AND WITH MESSAGES
@@ -256,7 +240,7 @@ export const chatReducer = createSlice({
 		});
 		builder.addCase(getCurrentAdminMessages.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(getCurrentAdminMessages.pending, (state, _) => {
 			state.loader = true;
@@ -270,7 +254,7 @@ export const chatReducer = createSlice({
 		});
 		builder.addCase(getSellerMessages.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(getSellerMessages.pending, (state, _) => {
 			state.loader = true;
@@ -284,7 +268,7 @@ export const chatReducer = createSlice({
 		});
 		builder.addCase(sendMessageToAdmin.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(sendMessageToAdmin.pending, (state, _) => {
 			state.loader = true;

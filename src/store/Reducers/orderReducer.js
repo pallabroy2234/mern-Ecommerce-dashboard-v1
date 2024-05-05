@@ -7,9 +7,7 @@ export const getAdminOrders = createAsyncThunk(
 	"order/getAdminOrders",
 	async ({parPage, currentPage, searchValue}, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/dashboard/order/admin/get-orders?currentPage=${currentPage || 1}&&parPage=${parPage || 5}&&searchValue=${searchValue}`, {
-				withCredentials: true
-			});
+			const {data} = await api.get(`/dashboard/order/admin/get-orders?currentPage=${currentPage || 1}&&parPage=${parPage || 5}&&searchValue=${searchValue}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -22,9 +20,7 @@ export const getSellerOrders = createAsyncThunk(
 	"order/getSellerOrders",
 	async ({parPage, currentPage, searchValue}, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/dashboard/order/seller/get-orders?currentPage=${currentPage || 1}&&parPage=${parPage || 5}&&searchValue=${searchValue || ""}`, {
-				withCredentials: true
-			});
+			const {data} = await api.get(`/dashboard/order/seller/get-orders?currentPage=${currentPage || 1}&&parPage=${parPage || 5}&&searchValue=${searchValue || ""}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -38,9 +34,7 @@ export const getAdminOrderDetails = createAsyncThunk(
 	"order/getAdminOrderDetails",
 	async (orderId, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/dashboard/order/admin/get-order-details/${orderId}`, {
-				withCredentials: true
-			});
+			const {data} = await api.get(`/dashboard/order/admin/get-order-details/${orderId}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			console.log(e.response.data);
@@ -55,9 +49,7 @@ export const getSellerOrderDetails = createAsyncThunk(
 	"order/getSellerOrderDetails",
 	async (orderId, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/dashboard/order/seller/get-order-details/${orderId}`, {
-				withCredentials: true
-			});
+			const {data} = await api.get(`/dashboard/order/seller/get-order-details/${orderId}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			console.log(e.response.data);
@@ -72,9 +64,7 @@ export const updateAdminOrderStatus = createAsyncThunk(
 	"order/updateAdminOrderStatus",
 	async ({orderId, info}, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.put(`/dashboard/order/admin/update-order-status/${orderId}`, info, {
-				withCredentials: true
-			});
+			const {data} = await api.put(`/dashboard/order/admin/update-order-status/${orderId}`, info);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -87,9 +77,7 @@ export const updateSellerOrderStatus = createAsyncThunk(
 	"order/updateSellerOrderStatus",
 	async ({orderId, info}, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.put(`/dashboard/order/seller/update-order-status/${orderId}`, info, {
-				withCredentials: true
-			});
+			const {data} = await api.put(`/dashboard/order/seller/update-order-status/${orderId}`, info);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -124,7 +112,7 @@ export const orderReducer = createSlice({
 		});
 		builder.addCase(getAdminOrders.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(getAdminOrders.pending, (state, {payload}) => {
 			state.loader = true;
@@ -137,7 +125,7 @@ export const orderReducer = createSlice({
 		});
 		builder.addCase(getAdminOrderDetails.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(getAdminOrderDetails.pending, (state, {payload}) => {
 			state.loader = true;
@@ -149,7 +137,7 @@ export const orderReducer = createSlice({
 		});
 		builder.addCase(updateAdminOrderStatus.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(updateAdminOrderStatus.pending, (state, _) => {
 			state.loader = true;
@@ -162,7 +150,7 @@ export const orderReducer = createSlice({
 			state.loader = false;
 		});
 		builder.addCase(getSellerOrders.rejected, (state, {payload}) => {
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 			state.loader = false;
 		});
 		builder.addCase(getSellerOrders.pending, (state, _) => {
@@ -176,7 +164,7 @@ export const orderReducer = createSlice({
 		});
 		builder.addCase(getSellerOrderDetails.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(getSellerOrderDetails.pending, (state, {payload}) => {
 			state.loader = true;
@@ -190,7 +178,7 @@ export const orderReducer = createSlice({
 		});
 		builder.addCase(updateSellerOrderStatus.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(updateSellerOrderStatus.pending, (state, _) => {
 			state.loader = true;

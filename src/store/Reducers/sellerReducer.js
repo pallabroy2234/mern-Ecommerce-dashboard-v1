@@ -7,7 +7,7 @@ export const get_request_sellers = createAsyncThunk(
 	"sellers/get_request_sellers",
 	async ({currentPage, parPage, searchValue}, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/get-request-sellers?currentPage=${currentPage}&&searchValue=${searchValue}&&parPage=${parPage}`, {withCredentials: true});
+			const {data} = await api.get(`/get-request-sellers?currentPage=${currentPage}&&searchValue=${searchValue}&&parPage=${parPage}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -21,7 +21,7 @@ export const get_sellerById = createAsyncThunk(
 	"sellers/get_sellerById",
 	async (sellerId, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/get-sellerById/${sellerId}`, {withCredentials: true});
+			const {data} = await api.get(`/get-sellerById/${sellerId}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -34,7 +34,7 @@ export const update_sellerStatus = createAsyncThunk(
 	"sellers/update_sellerStatus",
 	async (info, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.post("/update-sellerStatus", info, {withCredentials: true});
+			const {data} = await api.post("/update-sellerStatus", info);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -48,7 +48,7 @@ export const getActiveSellers = createAsyncThunk(
 	"sellers/getActiveSellers",
 	async ({currentPage, searchValue, parPage}, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/get-active-sellers?currentPage=${currentPage || 1}&&searchValue=${searchValue || ""}&&parPage=${parPage || 5}`, {withCredentials: true});
+			const {data} = await api.get(`/get-active-sellers?currentPage=${currentPage || 1}&&searchValue=${searchValue || ""}&&parPage=${parPage || 5}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -62,7 +62,7 @@ export const getDeActiveSellers = createAsyncThunk(
 	"sellers/getDeActiveSellers",
 	async ({currentPage, searchValue, parPage}, {rejectWithValue, fulfillWithValue}) => {
 		try {
-			const {data} = await api.get(`/get-deActive-sellers?currentPage=${currentPage || 1}&&searchValue=${searchValue || ""}&&parPage=${parPage || 5}`, {withCredentials: true});
+			const {data} = await api.get(`/get-deActive-sellers?currentPage=${currentPage || 1}&&searchValue=${searchValue || ""}&&parPage=${parPage || 5}`);
 			return fulfillWithValue(data);
 		} catch (e) {
 			return rejectWithValue(e.response.data);
@@ -153,7 +153,7 @@ export const sellerReducer = createSlice({
 			state.stateChangeLoader = true;
 		});
 		builder.addCase(update_sellerStatus.rejected, (state, {payload}) => {
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 			state.stateChangeLoader = false;
 		});
 		builder.addCase(update_sellerStatus.fulfilled, (state, {payload}) => {
@@ -173,7 +173,7 @@ export const sellerReducer = createSlice({
 		});
 		builder.addCase(getActiveSellers.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		
 		// 	* GET DEACTIVE SELLERS
@@ -188,10 +188,10 @@ export const sellerReducer = createSlice({
 		});
 		builder.addCase(getDeActiveSellers.rejected, (state, {payload}) => {
 			state.loader = false;
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 		});
 		builder.addCase(activeSellerStripeAccount.rejected, (state, {payload}) => {
-			state.errorMessage = payload.message;
+			state.errorMessage = payload?.message;
 			state.loader = false;
 		});
 		builder.addCase(activeSellerStripeAccount.pending, (state, _) => {
