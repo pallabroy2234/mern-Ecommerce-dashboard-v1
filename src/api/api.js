@@ -8,7 +8,7 @@ const developmentUrl = "http://localhost:3000";
 const productionUrl = "https://mern-ecommerce-backend-v1-w1ps.onrender.com"; // Replace this with your actual production URL
 
 // Determine the mode (development or production)
-const mode = "development"; // Change this to "production" when deploying
+const mode = "production"; // Change this to "production" when deploying
 
 // Select the appropriate API URL based on the mode
 const apiBaseUrl = mode === "production" ? productionUrl : developmentUrl;
