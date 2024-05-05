@@ -41,7 +41,7 @@ export const get_user_info = createAsyncThunk("auth/get_user_info", async (_, {r
 // ! seller login
 export const seller_login = createAsyncThunk("auth/seller_login", async (info, {rejectWithValue, fulfillWithValue}) => {
     try {
-        const {data} = await api.post("/seller-login", info);
+        const {data} = await api.post("/seller-login", info, {withCredentials: true});
         localStorage.setItem("accessToken", data.payload);
         return fulfillWithValue(data);
     } catch (e) {
