@@ -65,7 +65,7 @@ const SellerToAdmin = () => {
 						<div className="flex justify-between items-center">
 							<div className="flex justify-start items-center gap-3">
 								<div className="relative">
-									<img className="w-[54px] h-[54px] ring-[3px] ring-green-500  max-w-[55px] p-[2px] rounded-full" src="http://localhost:5173//public/images/admin.jpg" alt="" />
+									<img className="w-[54px] h-[54px] ring-[3px] ring-green-500  max-w-[55px] p-[2px] rounded-full" src="https://mern-ecommerce-dashboard-v1.onrender.com/seller/dashboard/images/admin.jpg" alt="" />
 									{/* Active Admin */}
 									{
 										activeAdmin &&
@@ -86,7 +86,7 @@ const SellerToAdmin = () => {
 												<div key={index} ref={lastMessageRef} className="w-full flex justify-start items-center">
 													<div className="flex justify-start items-center gap-2 md:px-3 py-2 max-w-full lg:max-w-[85%]">
 														<div>
-															<img className="w-[38px] h-[38px] ring-[2px] ring-white  max-w-[38px] p-[2px] rounded-full" src="/public/images/admin.jpg" alt="admin" />
+															<img className="w-[38px] h-[38px] ring-[2px] ring-white  max-w-[38px] p-[2px] rounded-full" src="https://mern-ecommerce-dashboard-v1.onrender.com/seller/dashboard/images/admin.jpg" alt="admin" />
 														</div>
 														<div className="flex justify-center items-start flex-col bg-orange-500 shadow-lg shadow-orange-500/50  text-white py-1 px-2 rounded-sm">
 															<span>{item?.message}</span>
@@ -102,7 +102,7 @@ const SellerToAdmin = () => {
 															<span>{item?.message}</span>
 														</div>
 														<div>
-															<img src={userInfo?.image ? userInfo?.image : "/public/images/admin.jpg"} alt={userInfo?.name} className="w-[38px] h-[38px] ring-[2px] ring-white  max-w-[38px] p-[2px] rounded-full" />
+															<img src={userInfo?.image ? userInfo?.image : "https://mern-ecommerce-dashboard-v1.onrender.com/seller/dashboard/images/admin.jpg"} alt={userInfo?.name} className="w-[38px] h-[38px] ring-[2px] ring-white  max-w-[38px] p-[2px] rounded-full" />
 														</div>
 													</div>
 												</div>

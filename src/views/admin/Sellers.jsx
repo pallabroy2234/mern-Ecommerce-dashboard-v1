@@ -63,7 +63,7 @@ const Sellers = () => {
 								<tr key={index}>
 									<td scope="row" className="px-4 py-2 font-medium whitespace-nowrap">{index + 1}</td>
 									<td scope="row" className="px-4 py-2 font-medium whitespace-nowrap">
-										<img className="w-[45px] h-[45px] object-cover" src={item?.image ? item?.image : "/public/images/seller.png"} alt={item?.name} />
+										<img className="w-[45px] h-[45px] object-cover" src={item?.image ? item?.image : "https://mern-ecommerce-dashboard-v1.onrender.com/seller/dashboard/images/seller.png"} alt={item?.name} />
 									</td>
 									<td scope="row" className="px-4 py-2 font-medium whitespace-nowrap">
 										<span>{item?.name}</span>

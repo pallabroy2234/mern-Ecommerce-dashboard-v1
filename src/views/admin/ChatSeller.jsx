@@ -101,7 +101,7 @@ const ChatSeller = () => {
 									<Link to={`/admin/dashboard/chat-sellers/${seller._id}`} key={index} className={` ${seller._id === sellerId ? "bg-slate-700" : ""} h-[60px] flex justify-start gap-2 items-center text-white px-2 py-8 mb-4 rounded-sm cursor-pointer `}>
 										<div className="relative">
 											<div className="w-[50px] h-[50px] overflow-hidden ring-[2px] ring-white ring-offset-[2px]  rounded-full">
-												<img className="w-full h-full object-cover" src={seller?.image || "/public/images/admin.jpg"} alt={seller?.name} />
+												<img className="w-full h-full object-cover" src={seller?.image || "https://mern-ecommerce-dashboard-v1.onrender.com/seller/dashboard/images/admin.jpg"} alt={seller?.name} />
 											</div>
 											{
 												activeSellers.some((item) => item.sellerId === seller._id) && (
@@ -129,7 +129,7 @@ const ChatSeller = () => {
 									<div className="flex justify-start items-center gap-3">
 										<div className="relative">
 											<div className="w-[54px] h-[54px] rounded-full overflow-hidden ring-2  ring-green-500">
-												<img src={currentSeller?.image ? currentSeller?.image : "/public/images/admin.jpg"} alt="" className="w-full h-full   object-cover" />
+												<img src={currentSeller?.image ? currentSeller?.image : "https://mern-ecommerce-dashboard-v1.onrender.com/seller/dashboard/images/admin.jpg"} alt="" className="w-full h-full   object-cover" />
 											</div>
 											{
 												activeSellers.some((item) => item.sellerId === sellerId) && (
@@ -156,7 +156,7 @@ const ChatSeller = () => {
 													<div key={index} ref={lastMessageRef} className="w-full flex justify-start items-center">
 														<div className="flex justify-start items-center gap-2 md:px-3 py-2 max-w-full lg:max-w-[85%]">
 															<div>
-																<img className="w-[38px] h-[38px] ring-[2px] ring-white  max-w-[38px] p-[2px] rounded-full" src="/public/images/admin.jpg" alt="" />
+																<img className="w-[38px] h-[38px] ring-[2px] ring-white  max-w-[38px] p-[2px] rounded-full" src="https://mern-ecommerce-dashboard-v1.onrender.com/seller/dashboard/images/admin.jpg" alt="" />
 															</div>
 															<div className="flex justify-center items-start flex-col bg-orange-500 shadow-lg shadow-orange-500/50  text-white py-1 px-2 rounded-sm">
 																<span>{item?.message}</span>
@@ -172,7 +172,7 @@ const ChatSeller = () => {
 																<span>{item?.message}</span>
 															</div>
 															<div>
-																<img className="w-[38px] h-[38px] ring-[2px] ring-white  max-w-[38px] p-[2px] rounded-full" src="/public/images/admin.jpg" alt="" />
+																<img className="w-[38px] h-[38px] ring-[2px] ring-white  max-w-[38px] p-[2px] rounded-full" src="https://mern-ecommerce-dashboard-v1.onrender.com/seller/dashboard/images/admin.jpg" alt="" />
 															</div>
 														</div>
 													</div>
