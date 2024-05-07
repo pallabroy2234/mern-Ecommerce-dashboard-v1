@@ -92,41 +92,34 @@ export const allNav = [
     },
     {
         id: 13,
-        title: "All Banner",
-        icon: <BsImages/>,
-        role: "seller",
-        path: "/seller/dashboard/banners"
-    },
-    {
-        id: 14,
         title: "Orders",
         icon: <AiOutlineShoppingCart/>,
         role: "seller",
         path: "/seller/dashboard/orders"
     },
     {
-        id: 15,
+        id: 14,
         title: "Payments",
         icon: <BsCurrencyDollar/>,
         role: "seller",
         path: "/seller/dashboard/payments"
     },
     {
-        id: 16,
+        id: 15,
         title: "Chat Customer",
         icon: <BsChat/>,
         role: "seller",
         path: "/seller/dashboard/chat-customer"
     },
     {
-        id: 17,
+        id: 16,
         title: "Chat Support",
         icon: <CiChat1/>,
         role: "seller",
         path: "/seller/dashboard/chat-support"
     },
     {
-        id: 18,
+        id: 17,
         title: "Profile",
         icon: <FaUsers/>,
         role: "seller",

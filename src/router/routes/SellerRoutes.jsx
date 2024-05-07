@@ -110,10 +110,4 @@ export const sellerRoutes = [
         role: "seller",
         status: "active"
     },
-    {
-        path: "/seller/dashboard/banners",
-        element: <Banners/>,
-        role: "seller",
-           status: "active"
-    },
 ]
