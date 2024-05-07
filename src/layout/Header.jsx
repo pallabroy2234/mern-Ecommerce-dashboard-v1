@@ -27,7 +27,7 @@ const Header = ({showSidebar, setShowSidebar}) => {
 							<div>
 								{
 									userInfo.role === "admin" ?
-										<img src="/public/images/admin.jpg" className="w-[45px] h-[45px] rounded-full overflow-hidden" alt={userInfo?.name} /> :
+										<img src="https://mern-ecommerce-dashboard-v1.onrender.com/images/admin.jpg" className="w-[45px] h-[45px] rounded-full overflow-hidden" alt={userInfo?.name} /> :
 										<img src={userInfo?.image} className="w-[45px] h-[45px] rounded-full object-cover overflow-hidden" alt={userInfo?.name} />
 								}
 							</div>
