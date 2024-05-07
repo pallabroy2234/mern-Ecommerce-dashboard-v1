@@ -5,7 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: [5173, 5174], // Set the desired port number
-    host: "0.0.0.0", // Bind to all network interfaces
-  },
+      proxy: {
+        "/api" : {
+          target: "https://mern-ecommerce-backend-v1-w1ps.onrender.com",
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, "")
+        }
+      }
+  }
 })
