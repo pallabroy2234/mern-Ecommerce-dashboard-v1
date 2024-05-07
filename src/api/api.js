@@ -14,6 +14,8 @@ const mode = "production"; // Change this to "production" when deploying
 const apiBaseUrl = mode === "production" ? productionUrl : developmentUrl;
 
 
+export const baseUrl = apiBaseUrl;
+
 const api = axios.create({
     // baseURL: "http://localhost:3000/api"
     baseURL: `${apiBaseUrl}/api/`,
