@@ -46,7 +46,7 @@ const Sidebar = ({showSidebar, setShowSidebar}) => {
 				{/* Logo */}
 				<div className="h-[70px] flex justify-center items-center">
 					<Link to={"/"} className="w-[180px] h-[50px]">
-						<img className="w-full h-full" src="http://localhost:5173/public/images/logo.png" alt="" />
+						<img className="w-full h-full" src="https://mern-ecommerce-dashboard-v1.onrender.com/images/logo.png" alt="logo" />
 					</Link>
 				</div>
 				

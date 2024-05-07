@@ -175,9 +175,9 @@ const AdminDashboard = () => {
 											<div className="flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#00d1e848] rounded-full z-10">
 												{
 													item.senderId === userInfo?._id ? (
-														<img src={"../../../public/images/admin.jpg"} className="rounded-full w-full h-full shadow-lg" alt="" />
+														<img src={"https://mern-ecommerce-dashboard-v1.onrender.com/images/admin.jpg"} className="rounded-full w-full h-full shadow-lg" alt="" />
 													) : (
-														<img src="../../../public/images/seller.png" className="rounded-full w-full h-full shadow-lg" alt="" />
+														<img src="https://mern-ecommerce-dashboard-v1.onrender.com/images/seller.png" className="rounded-full w-full h-full shadow-lg" alt="" />
 													)
 												}
 											</div>
