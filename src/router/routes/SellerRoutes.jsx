@@ -14,7 +14,7 @@ import OrderDetails from "../../views/seller/OrderDetails.jsx";
 import Pending from "../../views/seller/Pending.jsx";
 import Deactive from "../../views/seller/Deactive.jsx";
 import AddBanner from "../../views/seller/AddBanner.jsx";
-import Banners from "../../views/seller/Banners.jsx";
+
 
 
 const SellerDashboard = lazy(() => import("../../views/seller/SellerDashboard.jsx"));
